@@ -1,0 +1,12 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 8px;
+
+    .menu-item {
+        text-decoration: none;
+        width: 96px;
+        color: white;
+    }
+}

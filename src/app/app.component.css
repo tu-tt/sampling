@@ -1,0 +1,9 @@
+.app {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(66, 66, 66);
+    
+    .section {
+        width: 80%;
+    }
+}
