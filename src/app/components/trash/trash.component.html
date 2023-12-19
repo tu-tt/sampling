@@ -1,1 +1,35 @@
-<p>trash works!</p>
+<div>
+    <button mat-fab extended color="primary" (click)="clearTrash()">
+        <mat-icon>delete_sweep</mat-icon>
+        Empty trash
+    </button>
+    <table mat-table [dataSource]="dataSource" class="list-table">
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef>Title</th>
+            <td mat-cell *matCellDef="let note">{{note.title}}</td>
+        </ng-container>
+        <ng-container matColumnDef="createdDate">
+            <th mat-header-cell *matHeaderCellDef>Created Date</th>
+            <td mat-cell *matCellDef="let note">{{note.createdDate}}</td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let note">
+                <button mat-icon-button aria-label="Restore" (click)="restoreNote(note)">
+                    <mat-icon>restore_from_trash</mat-icon>
+                </button>
+                <button mat-icon-button aria-label="Delete" (click)="deleteNote(note)">
+                    <mat-icon>delete_forever</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+        <tr mat-row></tr>
+    </table>
+    <mat-paginator 
+        showFirstLastButtons
+        [pageSize]="5"
+        style="background-color:rgba(0, 0, 0, 0.5);"></mat-paginator>
+</div>

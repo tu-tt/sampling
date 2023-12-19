@@ -45,4 +45,17 @@ export class NoteService {
     this.notes = this.notes.filter(n => n.id !== note.id)
     this.deleteNotes.push(note)
   }
+
+  restoreNote(note: Note): void {
+    this.deleteNotes = this.deleteNotes.filter(n => n.id !== note.id)
+    this.notes.push(note)
+  }
+
+  deleteNote(note: Note): void {
+    this.deleteNotes = this.deleteNotes.filter(n => n.id !== note.id)
+  }
+
+  clearTrash(): void {
+    this.deleteNotes = []
+  }
 }
