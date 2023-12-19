@@ -1,4 +1,7 @@
 <div>
+    <button mat-fab color="primary" (click)="openForm(undefined)">
+        <mat-icon>add</mat-icon>
+    </button>
     <table mat-table [dataSource]="dataSource" class="list-table">
         <ng-container matColumnDef="title">
             <th mat-header-cell *matHeaderCellDef>Title</th>
@@ -11,13 +14,13 @@
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef>Action</th>
             <td mat-cell *matCellDef="let note">
-                <button mat-icon-button color="white" aria-label="Preview" (click)="preview(note)">
+                <button mat-icon-button aria-label="Preview" (click)="preview(note)">
                     <mat-icon>visibility</mat-icon>
                 </button>
-                <button mat-icon-button color="white" aria-label="Edit">
+                <button mat-icon-button aria-label="Edit" (click)="openForm(note)">
                     <mat-icon>edit</mat-icon>
                 </button>
-                <button mat-icon-button color="danger" aria-label="Delete">
+                <button mat-icon-button aria-label="Delete" (click)="moveNoteToTrash(note)">
                     <mat-icon>delete</mat-icon>
                 </button>
             </td>
@@ -29,6 +32,36 @@
     </table>
     <mat-paginator 
         showFirstLastButtons
-        [pageSize]="10"
+        [pageSize]="5"
         style="background-color:rgba(0, 0, 0, 0.5);"></mat-paginator>
 </div>
+<form *ngIf="editing" style="margin-top: 16px">
+    <h2 style="color: white;">{{formTitle}}</h2>
+    <mat-form-field style="width: 100%;">
+        <mat-label>Title</mat-label>
+        <input matInput type="text" required placeholder="Ex. My note" 
+            [formControl]="titleControl" [errorStateMatcher]="matcher"
+            [value]="editingNote.title || ''"
+            (change)="editingNote.title=bindValue($event)">
+        <mat-error *ngIf="titleControl.hasError('required')">
+            Title is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field style="width: 100%;">
+        <mat-label>Content</mat-label>
+        <textarea rows="10" matInput required placeholder="Ex. Go to the beach..." 
+            [formControl]="contentControl" [errorStateMatcher]="matcher"
+            [value]="editingNote.content || ''"
+            (input)="editingNote.content=bindValue($event)"></textarea>
+        <mat-error *ngIf="contentControl.hasError('required')">
+            Content is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <div style="display: flex; gap: 16px;">
+        <button mat-flat-button type="button" color="primary" 
+            [disabled]="titleControl.hasError('required') || contentControl.hasError('required')"
+            (click)="saveNote()">Save</button>
+        <button type="button" mat-stroked-button (click)="closeForm()">Cancel</button>
+    </div>
+</form>

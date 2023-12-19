@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -22,6 +22,7 @@ import { routes } from './app.routes';
   ],
   providers: [
     provideRouter(routes),
+    provideAnimations(),
   ],
   bootstrap: [AppComponent]
 })
