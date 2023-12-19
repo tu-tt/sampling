@@ -27,9 +27,9 @@ export class NoteStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-list-view',
-  templateUrl: './list-view.component.html',
-  styleUrls: ['./list-view.component.css'],
+  selector: 'app-notes',
+  templateUrl: './notes.component.html',
+  styleUrls: ['./notes.component.css'],
   standalone: true,
   imports: [
     MatTableModule, 

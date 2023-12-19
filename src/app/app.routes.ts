@@ -1,5 +1,5 @@
-import { ListViewComponent } from './components/list-view/list-view.component';
-import { TrashComponent } from './components/trash/trash.component';
+import { ListViewComponent } from './pages/notes/notes.component';
+import { TrashComponent } from './pages/trash/trash.component';
 
 export const routes = [
     {path: 'notes', component: ListViewComponent},

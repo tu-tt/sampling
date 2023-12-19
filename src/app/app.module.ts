@@ -4,8 +4,8 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { TrashComponent } from './components/trash/trash.component';
-import { ListViewComponent } from './components/list-view/list-view.component';
+import { TrashComponent } from './pages/trash/trash.component';
+import { ListViewComponent } from './pages/notes/notes.component';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 

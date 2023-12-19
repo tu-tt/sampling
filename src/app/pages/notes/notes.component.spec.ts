@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListViewComponent } from './list-view.component';
+import { ListViewComponent } from './notes.component';
 
 describe('ListViewComponent', () => {
   let component: ListViewComponent;
